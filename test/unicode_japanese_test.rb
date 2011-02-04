@@ -8,31 +8,23 @@ class UnicodeJapaneseTest < Test::Unit::TestCase
 
   def test_accept_nil
     assert_nothing_raised do
-      Unicode::Japanese.new(nil).z2h
+      Unicode::Japanese.z2h(nil)
     end
   end
 
   def test_dup
-    src = "ア"
-    Unicode::Japanese.new(src).z2h
-    assert_equal "ア", src
+    assert_equal "ｱ", Unicode::Japanese.z2h("ア")
   end
 
   ######################################################################
   ### Convertions
 
   def test_z2h
-    got = Unicode::Japanese.new("スズキ　アイリ").z2h
-    assert_equal "ｽｽﾞｷ ｱｲﾘ", got
+    assert_equal "ｽｽﾞｷ ｱｲﾘ", Unicode::Japanese.z2h("スズキ　アイリ")
   end
 
   def test_h2z
-    got = Unicode::Japanese.new("ｽｽﾞｷ ｱｲﾘ").h2z
-    assert_equal "スズキ　アイリ", got
-  end    
+    assert_equal "スズキ　アイリ", Unicode::Japanese.h2z("ｽｽﾞｷ ｱｲﾘ")
+  end
 
-  def test_class_method
-    got = Unicode::Japanese.h2zKanaD("ｽｽﾞｷ ｱｲﾘ")
-    assert_equal "ｽズｷ ｱｲﾘ", got
-  end    
 end

@@ -1,50 +1,36 @@
-class Unicode::Japanese
-  attr_accessor :string
+module Unicode
+  class Japanese
 
-  class << self
-    def convert(action, string)
-      pattern = Pattern.__send__(action) rescue raise(NotImplementedError, "Undefined Pattern: #{action}")
-      table   = Table  .__send__(action) rescue raise(NotImplementedError, "Undefined Table: #{action}")
-      string.gsub!(pattern){table[$1]}
-      return string
-    end
-
-    private
-      def method_missing(*args)
-        convert(*args)
+    class << self
+      def convert(action, string)
+        pattern = Pattern.__send__(action)# rescue raise(NotImplementedError, "Undefined Pattern: #{action}")
+        table   = Table  .__send__(action)# rescue raise(NotImplementedError, "Undefined Table: #{action}")
+        string.gsub!(pattern){table[$1]}
+        return string
       end
-  end
 
-  def initialize(string)
-    @string = string.to_s.dup
-  end
+      def z2h(str)
+        str = str.to_s.dup
+        convert('z2hKanaD', str)
+        convert('z2hKanaK', str)
+        convert('z2hNum', str)
+        convert('z2hAlpha', str)
+        convert('z2hSym', str)
+        str
+      end
 
-  def z2h
-    z2hKana
-    z2hNum
-    z2hAlpha
-    z2hSym
-  end
+      def h2z(str)
+        str = str.to_s.dup
+        convert('h2zKanaD', str)
+        convert('h2zKanaK', str)
+        convert('h2zNum', str)
+        convert('h2zAlpha', str)
+        convert('h2zSym', str)
+        str
+      end
 
-  def z2hKana
-    z2hKanaD
-    z2hKanaK
-  end
-
-  def h2z
-    h2zKana
-    h2zNum
-    h2zAlpha
-    h2zSym
-  end
-
-  def h2zKana
-    h2zKanaD
-    h2zKanaK
-  end
-
-  private
-    def method_missing(*args)
-      self.class.__send__(args[0], @string)
     end
+
+
+  end
 end
