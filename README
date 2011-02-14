@@ -15,7 +15,7 @@ The patterns and tables are derived from
 Example
 =======
 
-  Unicode::Japanese.new("スズキ　アイリ").z2h
+  Unicode::Japanese.z2h("スズキ　アイリ")
   # => "ｽｽﾞｷ ｱｲﾘ"
 
 Copyright (c) 2008 maiha@wota.jp, released under the MIT license
