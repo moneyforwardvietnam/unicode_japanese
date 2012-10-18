@@ -1,5 +1,6 @@
+# -*- encoding : utf-8 -*-
 require 'test/unit'
-require File.dirname(__FILE__) + '/../init'
+require File.expand_path('../init', File.dirname(__FILE__))
 
 class UnicodeJapaneseTest < Test::Unit::TestCase
 

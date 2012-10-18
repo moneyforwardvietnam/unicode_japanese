@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Unicode
   class Japanese
     module Pattern
