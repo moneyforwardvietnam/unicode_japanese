@@ -6,7 +6,6 @@ Gem::Specification.new do |s|
   s.email = "maiha@wota.jp"
   s.homepage = "https://github.com/sunfmin/unicode_japanese"
   s.description = ""
-  s.has_rdoc = true
   s.authors = ["maiha"]
   s.files = %w(MIT-LICENSE lib/unicode/japanese.rb lib/unicode/japanese/table.rb lib/unicode/japanese/pattern.rb lib/unicode_japanese.rb test/unicode_japanese_test.rb unicode_japanese.gemspec Rakefile README)
 end
